@@ -53,43 +53,30 @@
     "bval": "git+https://github.com/bcoin-org/bval.git#semver:~0.1.6",
     "bweb": "git+https://github.com/bcoin-org/bweb.git#semver:=0.1.9",
     "ecashaddrjs": "^1.0.7",
-    "loady": "git+https://github.com/chjj/loady.git#semver:~0.0.1",
+    "loady": "github:chjj/loady#semver:~0.0.1",
     "mrmr": "^0.1.8",
     "n64": "git+https://github.com/chjj/n64.git#semver:~0.2.10",
     "nan": "git+https://github.com/braydonf/nan.git#semver:=2.14.0"
   },
-  "bundleDependencies": [
-    "bcfg",
-    "bcurl",
-    "bdb",
-    "bdns",
-    "bevent",
-    "bfile",
-    "bheep",
-    "binet",
-    "blgr",
-    "blru",
-    "blst",
-    "bmutex",
-    "brq",
-    "bs32",
-    "bsert",
-    "bsock",
-    "bsocks",
-    "btcp",
-    "buffer-map",
-    "bufio",
-    "bupnp",
-    "bval",
-    "bweb",
-    "loady",
-    "n64",
-    "nan"
-  ],
-  "devDependencies": {
-    "bmocha": "git+https://github.com/bcoin-org/bmocha.git#semver:=2.1.2"
+  "devDependencies": {    
+
+    "@babel/core": "^7.26.10",
+    "@babel/preset-react": "^7.26.3",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-replace": "^6.0.2",
+    "bmocha": "git+https://github.com/bcoin-org/bmocha.git#semver:=2.1.2",
+    "dotenv": "^16.5.0",
+    "rollup": "^4.40.0",
+    "rollup-plugin-polyfill-node": "^0.13.0"
   },
-  "main": "./lib/bcoin-browser.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],  
   "bin": {
     "bcash": "./bin/bcash",
     "bcash-node": "./bin/node",
@@ -99,17 +86,7 @@
     "bwallet-cli": "./bin/bwallet-cli"
   },
   "scripts": {
-    "browserify": "browserify -s bcoin lib/bcoin-browser.js | uglifyjs -c > bcoin.js",
-    "clean": "rm -f {browser/,}{bcoin.js,bcoin-worker.js,app.js,worker.js}",
-    "docs": "jsdoc -c jsdoc.json",
-    "lint": "eslint $(cat .eslintfiles) || exit 0",
-    "lint-ci": "eslint $(cat .eslintfiles)",
-    "lint-file": "eslint",
-    "test": "bmocha --reporter spec test/*.js",
-    "test-browser": "NODE_BACKEND=js bmocha --reporter spec test/*.js",
-    "test-file": "bmocha --reporter spec",
-    "test-file-browser": "NODE_BACKEND=js bmocha --reporter spec",
-    "test-ci": "nyc -a -n 'lib/**/*.js' --reporter=lcov --reporter=text npm run test"
+    "build": "rollup --config rollup.config.mjs"
   },
   "browser": {
     "./lib/hd/nfkd": "./lib/hd/nfkd-compat.js",
