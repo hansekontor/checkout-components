@@ -1,5 +1,3 @@
-'use strict';
-
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function getDefaultExportFromCjs (x) {
@@ -8889,7 +8887,7 @@ var bstring = {};
 
 var base58 = {exports: {}};
 
-var __dirname$1 = '/home/henrik/Documents/dev/checkout-components/node_modules/bstring/lib';
+var __dirname = '/home/henrik/Documents/dev/checkout-components/node_modules/bstring/lib';
 
 var binding = {};
 
@@ -10522,7 +10520,7 @@ function requireBinding () {
 	  throw new Error('Non-native backend selected.');
 
 	const assert = requireAssert$1();
-	const binding$1 = requireLoady()('bstring', __dirname$1);
+	const binding$1 = requireLoady()('bstring', __dirname);
 
 	binding.base58 = {
 	  encode: binding$1.base58_encode,
@@ -64308,5 +64306,5 @@ function requireBcoinBrowser () {
 var bcoinBrowserExports = requireBcoinBrowser();
 var bcoinBrowser = /*@__PURE__*/getDefaultExportFromCjs(bcoinBrowserExports);
 
-module.exports = bcoinBrowser;
+export { bcoinBrowser as default };
 //# sourceMappingURL=index.js.map
