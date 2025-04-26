@@ -12,16 +12,18 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 export default {
    input: 'lib/bcoin-browser.js',
-   output: {
-      file: "dist/es/index.js",
-      format: 'es',
-      sourcemap: true,
-   },
-   output: {
-      file: "dist/cjs/index.js",
-      format: 'cjs',
-      sourcemap: true,
-   },
+   output: [
+      {
+         file: "dist/es/index.js",
+         format: 'esm',
+         sourcemap: true,
+      },
+      {
+         file: "dist/cjs/index.js",
+         format: 'cjs',
+         sourcemap: true,
+      },
+   ],   
    plugins: [
       nodeResolve({
          extensions: ['.js', '.jsx']
