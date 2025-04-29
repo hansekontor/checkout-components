@@ -5,6 +5,8 @@ import babel from '@rollup/plugin-babel';
 import replace from '@rollup/plugin-replace';
 import json from '@rollup/plugin-json';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
+import nodeExternals from 'rollup-plugin-node-externals'
+
 
 config();
 
@@ -21,28 +23,14 @@ export default {
       {
          file: "dist/cjs/index.js",
          format: 'cjs',
-         sourcemap: true,
+         sourcemap: true
       },
    ],   
    plugins: [
-      nodeResolve({
-         extensions: ['.js', '.jsx']
-      }),
-      babel({
-         babelHelpers: 'bundled',
-         presets: ['@babel/preset-react'],
-         extensions: ['.js', '.jsx'],
-         exclude: 'node_modules/**'
-      }),
+      nodeResolve(),      
       commonjs(),
-      replace({
-         preventAssignment: false,
-      //  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      //  'process.env.HOSTNAME': JSON.stringify(process.env.HOSTNAME),
-      //  'process.env.URL_SANDBOX': JSON.stringify(process.env.URL_SANDBOX),
-      //  'process.env.URL_PRODUCTION': JSON.stringify(process.env.URL_PRODUCTION),
-      }), 
       json(),
       nodePolyfills(),
+      nodeExternals(),
    ],
 }
