@@ -41,7 +41,7 @@ function getAugmentedNamespace(n) {
 	return a;
 }
 
-var bcoinBrowser$1 = {};
+var bcoinBrowser$1 = {exports: {}};
 
 var btc = {};
 
@@ -76052,7 +76052,7 @@ function requireB70 () {
 var pkg = {};
 
 var name = "@hansekontor/checkout-components";
-var version = "1.2.1";
+var version = "1.3.0";
 var require$$0 = {
 	name: name,
 	version: version};
@@ -76158,9 +76158,9 @@ function requirePkg () {
 var hasRequiredBcoinBrowser;
 
 function requireBcoinBrowser () {
-	if (hasRequiredBcoinBrowser) return bcoinBrowser$1;
+	if (hasRequiredBcoinBrowser) return bcoinBrowser$1.exports;
 	hasRequiredBcoinBrowser = 1;
-	(function (exports) {
+	(function (module, exports) {
 
 		/**
 		 * A bcoin "environment" which exposes all
@@ -76208,7 +76208,8 @@ function requireBcoinBrowser () {
 		bcoin.hd = requireHd();
 		bcoin.HDPrivateKey = require_private();
 		bcoin.HDPublicKey = require_public();
-		bcoin.Mnemonic = requireMnemonic();
+		// bcoin.Mnemonic = require('./hd/mnemonic');
+		module.exports.Mnemonic = requireMnemonic();
 
 		// Primitives
 		bcoin.primitives = requirePrimitives();
@@ -76255,8 +76256,8 @@ function requireBcoinBrowser () {
 
 		// Package Info
 		bcoin.pkg = requirePkg(); 
-	} (bcoinBrowser$1));
-	return bcoinBrowser$1;
+	} (bcoinBrowser$1, bcoinBrowser$1.exports));
+	return bcoinBrowser$1.exports;
 }
 
 var bcoinBrowserExports = requireBcoinBrowser();

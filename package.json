@@ -69,7 +69,11 @@
     "rollup-plugin-polyfill-node": "^0.13.0"
   },
   "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "module": "dist/es/index.js",
+  "exports": {
+	"import": "./dist/es/index.js",
+	"require": "./dist/cjs/index.js"
+  },
   "scripts": {
     "build": "rollup --config rollup.config.mjs"
   }
