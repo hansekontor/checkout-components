@@ -1,6 +1,6 @@
 {
   "name": "@hansekontor/checkout-components",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "bcash/bcrypto/bfilter components for checkout",
   "license": "MIT",
   "repository": "git://github.com/hansekontor/checkout-components.git",
