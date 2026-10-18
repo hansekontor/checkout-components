@@ -75,6 +75,7 @@
 	"require": "./dist/cjs/index.js"
   },
   "scripts": {
-    "build": "rollup --config rollup.config.mjs"
+    "build": "rollup --config rollup.config.mjs",
+    "test": "bmocha --reporter spec test/*.js"
   }
 }
